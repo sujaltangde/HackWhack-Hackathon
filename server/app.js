@@ -3,7 +3,7 @@ const cors = require("cors");
 const app = express();
 const fileUpload = require("express-fileupload");
 const dotenv = require("dotenv");
-const pool = require("./config/database/db.js");
+
 dotenv.config({ path: "./config/config.env" });
 
 app.use(express.json({ limit: "10mb" }));

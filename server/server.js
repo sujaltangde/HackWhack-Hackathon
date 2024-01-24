@@ -1,6 +1,13 @@
 const app = require("./app.js");
+const connectDatabase = require('./config/database.js') 
 const dotenv = require("dotenv");
 dotenv.config({ path: "./config/config.env" });
+
+
+// connecting databse
+connectDatabase() ;
+
+
 
 // Handling Uncaught Exception
 process.on("uncaughtException", (err) => {
