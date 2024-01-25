@@ -3,6 +3,7 @@ const bcrypt = require("bcrypt");
 const { createToken } = require("../middlewares/auth");
 const College = require('../models/collegeModel');
 
+// my user has register here with the unique ID and proceed to the registration with college id
 exports.registerUser = async (req, res) => {
   try {
     const {
@@ -22,15 +23,12 @@ exports.registerUser = async (req, res) => {
       uniqueId,
     } = req.body;
 
-    // Check if uniqueId exists in college database
     const collegeEntry = await College.findOne({ uniqueId });
 
     if (!collegeEntry) {
-      // If uniqueId not found, throw an error
       throw new Error('Registration is not allowed. UniqueId does not match any college entry.');
     }
 
-    // If uniqueId is found, proceed with user registration
     const hashPass = await bcrypt.hash(password, 10);
 
     const user = await User.create({
@@ -66,6 +64,8 @@ exports.registerUser = async (req, res) => {
   }
 };
 
+
+// checking if the user is register and login them 
 exports.loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -110,6 +110,8 @@ exports.loginUser = async (req, res) => {
   }
 };
 
+
+// for the user which register to check they are login
 exports.isLogin = async (req, res) => {
   try {
     const user = await User.findById(req.user._id);
