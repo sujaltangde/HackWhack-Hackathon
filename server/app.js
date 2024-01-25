@@ -18,8 +18,10 @@ app.use(fileUpload());
 
 // Routes Import
 const user = require("./routes/UserRoutes.js");
+const college = require("./routes/CollegeRoutes.js");
 
 app.use("/api/", user);
+app.use("/api/college", college)
 
 app.get("/api/v1/test", (req, res) => {
   res.json("I am working");
