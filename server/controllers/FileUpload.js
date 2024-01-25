@@ -1,5 +1,6 @@
 const file = require("../models/fileModel");
 
+// to upload the file
 exports.fileUpload = async(req, res) => {
     try{
         const{certificate, fileUpload} = req.body;
