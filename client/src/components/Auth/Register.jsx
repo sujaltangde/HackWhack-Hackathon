@@ -1,7 +1,49 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import { registerUser } from "../../actions/userActions";
 
 export const Register = () => {
   const [name, setName] = useState();
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  const [number, setNumber] = useState();
+  const [fatherName, setFatherName] = useState();
+  const [occupation, setOccupation] = useState();
+  const [annualIncome, setAnnualIncome] = useState();
+  const [motherName, setMotherName] = useState();
+  const [occupationMother, setOccupationMother] = useState();
+  const [annualIncomeMother, setAnnualIncomeMother] = useState();
+  const [dob, setDob] = useState();
+  const [state_of_origin, setState_of_origin] = useState();
+  const [address, setAddress] = useState();
+  const [uniqueId, setUniqueId] = useState();
+
+  const dispatch = useDispatch();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const data = {
+      name,
+      email,
+      password,
+      number,
+      dob,
+      state_of_origin,
+      address,
+      fatherName,
+      occupation,
+      annualIncome,
+      motherName,
+      occupationMother,
+      annualIncomeMother,
+      uniqueId
+    };
+
+    dispatch(registerUser(data))
+
+    // console.log(data)
+  };
 
   return (
     <>
@@ -11,7 +53,10 @@ export const Register = () => {
             Register Details
           </div>
 
-          <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+          <form
+            onSubmit={handleSubmit}
+            className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+          >
             <div className="flex flex-row gap-5">
               <div className="mb-4">
                 <label
@@ -21,6 +66,8 @@ export const Register = () => {
                   Name:
                 </label>
                 <input
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   id="name"
                   type="text"
@@ -35,6 +82,8 @@ export const Register = () => {
                   Email:
                 </label>
                 <input
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   id="email"
                   type="email"
@@ -44,13 +93,15 @@ export const Register = () => {
               <div className="mb-6">
                 <label
                   className="block text-gray-700 text-sm font-bold mb-2"
-                  htmlFor="password"
+                  htmlFor="number"
                 >
                   Phone Number:
                 </label>
                 <input
+                  value={number}
+                  onChange={(e) => setNumber(e.target.value)}
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  id="phone"
+                  id="number"
                   type="tel"
                   placeholder="Your Phone Number"
                 />
@@ -66,6 +117,8 @@ export const Register = () => {
                   Father Name:
                 </label>
                 <input
+                  value={fatherName}
+                  onChange={(e) => setFatherName(e.target.value)}
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   id="fatherName"
                   type="text"
@@ -80,6 +133,8 @@ export const Register = () => {
                   Occupation:
                 </label>
                 <input
+                  value={occupation}
+                  onChange={(e) => setOccupation(e.target.value)}
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   id="occupation"
                   type="text"
@@ -94,6 +149,8 @@ export const Register = () => {
                   Annual Income:
                 </label>
                 <input
+                  value={annualIncome}
+                  onChange={(e) => setAnnualIncome(e.target.value)}
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   id="annualIncome"
                   type="number"
@@ -110,6 +167,8 @@ export const Register = () => {
                   Mother name:
                 </label>
                 <input
+                  value={motherName}
+                  onChange={(e) => setMotherName(e.target.value)}
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   id="motherName"
                   type="text"
@@ -124,6 +183,8 @@ export const Register = () => {
                   Occupation of mother:
                 </label>
                 <input
+                  value={occupationMother}
+                  onChange={(e) => setOccupationMother(e.target.value)}
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   id="occupationMother"
                   type="text"
@@ -138,6 +199,8 @@ export const Register = () => {
                   Annual Income Mother:
                 </label>
                 <input
+                  value={annualIncomeMother}
+                  onChange={(e) => setAnnualIncomeMother(e.target.value)}
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   id="annualIncomeMother"
                   type="number"
@@ -145,7 +208,6 @@ export const Register = () => {
                 />
               </div>
             </div>
-            
 
             <div className="flex flex-row gap-5">
               <div className="mb-4">
@@ -156,6 +218,8 @@ export const Register = () => {
                   Date of Birth:
                 </label>
                 <input
+                  value={dob}
+                  onChange={(e) => setDob(e.target.value)}
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   id="dob"
                   type="date"
@@ -170,6 +234,8 @@ export const Register = () => {
                   State of origin:
                 </label>
                 <input
+                  value={state_of_origin}
+                  onChange={(e) => setState_of_origin(e.target.value)}
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   id="state_of_origin"
                   type="text"
@@ -185,6 +251,8 @@ export const Register = () => {
                   Address:
                 </label>
                 <input
+                  value={address}
+                  onChange={(e) => setAddress(e.target.value)}
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   id="address"
                   type="text"
@@ -193,19 +261,36 @@ export const Register = () => {
               </div>
             </div>
             <div className="flex flex-row gap-5">
-              
               <div className="mb-6">
                 <label
                   className="block text-gray-700 text-sm font-bold mb-2"
-                  htmlFor="annualIncomeMother"
+                  htmlFor="uniqueId"
                 >
                   Unique Id:
                 </label>
                 <input
+                  value={uniqueId}
+                  onChange={(e) => setUniqueId(e.target.value)}
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   id="uniqueId"
                   type="text"
                   placeholder="Enter Unique Id "
+                />
+              </div>
+              <div className="mb-6">
+                <label
+                  className="block text-gray-700 text-sm font-bold mb-2"
+                  htmlFor="uniqueId"
+                >
+                  Create Password:
+                </label>
+                <input
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  id="password"
+                  type="password"
+                  placeholder="Create new password "
                 />
               </div>
             </div>
@@ -213,7 +298,7 @@ export const Register = () => {
             <div className="flex items-center w-full justify-center">
               <button
                 className="bg-blue-500 w-1/3 hover:bg-blue-700 text-white font-bold py-2 px-4  focus:outline-none focus:shadow-outline"
-                type="button"
+                type="submit"
               >
                 Register
               </button>
@@ -227,18 +312,6 @@ export const Register = () => {
 
 /*
 
-            name,
-            email,
-            number,
-            
-            dob,
-            state_of_origin,
-            address,
-            fatherName,
-            occupation,
-            annualIncome,
-            motherName,
-            occupationMother,
-            annualIncomeMother
+           
 
 */

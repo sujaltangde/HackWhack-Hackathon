@@ -4,6 +4,8 @@ import { NumIncrDecr } from "./components/Test/NumIncrDecr"
 import { Login } from "./components/Auth/Login"
 import { Home } from "./components/Home/Home"
 import { Register } from "./components/Auth/Register"
+import {ToastContainer} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
 
@@ -22,6 +24,22 @@ function App() {
 <Route path="/register" element={<Register/>} />
 
 </Routes>    
+
+
+<ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        className="mt-14 font-bold  "
+
+      />
 
     </>
   )
