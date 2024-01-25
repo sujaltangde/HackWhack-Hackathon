@@ -1,5 +1,7 @@
 const college = require("../models/collegeModel");
 
+
+// they are college
 exports.signupCollege = async (req, res) => {
     try {
       const {
@@ -34,7 +36,7 @@ exports.signupCollege = async (req, res) => {
         uniqueId,
       });
   
-      const savedCollege = await newCollege.save(); // Corrected line
+      const savedCollege = await newCollege.save(); 
   
       res.status(201).json({
         success: true,
