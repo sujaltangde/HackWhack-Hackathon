@@ -4,6 +4,7 @@ const { createToken } = require("../middlewares/auth");
 
 exports.registerUser = async (req, res) => {
   try {
+
     const {
       name,
       email,
@@ -20,6 +21,9 @@ exports.registerUser = async (req, res) => {
       annualIncomeMother,
       uniqueId,
     } = req.body;
+
+
+    console.log(req.body)
 
     const hashPass = await bcrypt.hash(password, 10);
 

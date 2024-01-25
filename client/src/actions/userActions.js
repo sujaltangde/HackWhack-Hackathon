@@ -13,7 +13,7 @@ export const loginUser = (userData) => async (dispatch) =>{
         dispatch(loginRequest())
         
 
-        const {data} = await axios.post('https://doithero-b.onrender.com/api/v1/loginUser',userData)
+        const {data} = await axios.post('http://localhost:5000/api/register',userData)
 
         dispatch(loginSuccess())
         localStorage.setItem('accesstoken',data.token)
@@ -27,9 +27,10 @@ export const loginUser = (userData) => async (dispatch) =>{
 export const registerUser = (userData) => async (dispatch) =>{
     try{
         dispatch(registerRequest())
-        
 
-        const {data} = await axios.post('https://doithero-b.onrender.com/api/v1/register',userData)
+        const {data} = await axios.post('http://localhost:5000/api/register',userData)
+        
+        console.log(data)
 
         dispatch(registerSuccess())
         localStorage.setItem('accesstoken',data.token)

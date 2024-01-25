@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import {registerUser} from '../actions/userActions'
+import { registerUser } from "../../actions/userActions";
 
 export const Register = () => {
   const [name, setName] = useState();
   const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
   const [number, setNumber] = useState();
   const [fatherName, setFatherName] = useState();
   const [occupation, setOccupation] = useState();
@@ -25,6 +26,7 @@ export const Register = () => {
     const data = {
       name,
       email,
+      password,
       number,
       dob,
       state_of_origin,
@@ -35,11 +37,12 @@ export const Register = () => {
       motherName,
       occupationMother,
       annualIncomeMother,
+      uniqueId
     };
 
     dispatch(registerUser(data))
 
-    console.log(data)
+    // console.log(data)
   };
 
   return (
@@ -272,6 +275,22 @@ export const Register = () => {
                   id="uniqueId"
                   type="text"
                   placeholder="Enter Unique Id "
+                />
+              </div>
+              <div className="mb-6">
+                <label
+                  className="block text-gray-700 text-sm font-bold mb-2"
+                  htmlFor="uniqueId"
+                >
+                  Create Password:
+                </label>
+                <input
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  id="password"
+                  type="password"
+                  placeholder="Create new password "
                 />
               </div>
             </div>
