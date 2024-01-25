@@ -23,12 +23,12 @@ export const Home = () => {
           why we're here to connect you with exclusive scholarships tailored for
           out-of-state students in Maharashtra.
         </div>
-        <div className="text-lg text-center mt-6 px-3">
+        <div className="text-lg text-center pt-6 pb-4 px-3">
           At UniScholar, we believe that every student deserves the chance to
           thrive in Maharashtra's educational landscape. Start your journey with
           us and explore the diverse range of scholarships waiting for you.
         </div>
-        <p className="text-lg text-center mt-6">
+        <p className="text-lg text-center pt-6">
           <strong>
             Apply now and step into a world of opportunities with UniScholar!
           </strong>
@@ -36,7 +36,7 @@ export const Home = () => {
 
         <div className="mb-12  flex  justify-center pt-6 items-center w-full ">
             
-        <Link to="/login" className="bg-blue-700 text-center py-3 font-mono px-12 w-1/4 text-xl text-white">
+        <Link to="/register" className="bg-blue-700 hover:bg-blue-600 text-center py-3 font-mono px-12 w-1/4 text-xl text-white">
             Apply
           </Link>
             
