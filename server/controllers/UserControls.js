@@ -1,6 +1,7 @@
 const User = require("../models/userModel");
 const bcrypt = require("bcrypt");
 const { createToken } = require("../middlewares/auth");
+const College = require('../models/collegeModel');
 
 exports.registerUser = async (req, res) => {
   try {
@@ -21,6 +22,15 @@ exports.registerUser = async (req, res) => {
       uniqueId,
     } = req.body;
 
+    // Check if uniqueId exists in college database
+    const collegeEntry = await College.findOne({ uniqueId });
+
+    if (!collegeEntry) {
+      // If uniqueId not found, throw an error
+      throw new Error('Registration is not allowed. UniqueId does not match any college entry.');
+    }
+
+    // If uniqueId is found, proceed with user registration
     const hashPass = await bcrypt.hash(password, 10);
 
     const user = await User.create({
@@ -44,12 +54,12 @@ exports.registerUser = async (req, res) => {
 
     res.status(201).json({
       success: true,
-      message: "User registered",
+      message: 'User registered',
       user,
       token,
     });
   } catch (err) {
-    res.status(500).json({
+    res.status(400).json({
       success: false,
       message: err.message,
     });
