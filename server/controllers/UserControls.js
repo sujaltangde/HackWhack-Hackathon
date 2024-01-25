@@ -4,7 +4,22 @@ const { createToken } = require("../middlewares/auth");
 
 exports.registerUser = async (req, res) => {
   try {
-    const { name, email, password } = req.body;
+    const {
+      name,
+      email,
+      password,
+      number,
+      dob,
+      state_of_origin,
+      address,
+      fatherName,
+      occupation,
+      annualIncome,
+      motherName,
+      occupationMother,
+      annualIncomeMother,
+      uniqueId,
+    } = req.body;
 
     const hashPass = await bcrypt.hash(password, 10);
 
@@ -12,6 +27,17 @@ exports.registerUser = async (req, res) => {
       name,
       email,
       password: hashPass,
+      number,
+      dob,
+      state_of_origin,
+      address,
+      fatherName,
+      occupation,
+      annualIncome,
+      motherName,
+      occupationMother,
+      annualIncomeMother,
+      uniqueId,
     });
 
     const token = createToken(user._id, user.email);
@@ -85,14 +111,11 @@ exports.isLogin = async (req, res) => {
       });
     }
 
-    const { name, email, _id, createdAt } = user;
-    const userObj = { name, email, _id, createdAt };
-
     if (user) {
       return res.status(200).json({
         success: true,
         isLogin: true,
-        userObj,
+        user,
       });
     }
   } catch (err) {
@@ -108,12 +131,9 @@ exports.getUserDetails = async (req, res) => {
   try {
     const user = await User.findById(req.user._id);
 
-    const { name, email, _id, createdAt } = user;
-    const userObj = { name, email, _id, createdAt };
-
     res.status(200).json({
       success: true,
-      userObj,
+      user,
     });
   } catch (err) {
     res.status(200).json({

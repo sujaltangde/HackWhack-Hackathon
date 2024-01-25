@@ -3,7 +3,7 @@ const validator = require('validator')
 
 
 
-const userSchema = new mongoose.Schema({
+const collegeSchema = new mongoose.Schema({
 
     name:{
         type: String,
@@ -16,10 +16,6 @@ const userSchema = new mongoose.Schema({
         required: [true, "Please enter your email"],
         unique: true,
         validate:[validator.isEmail, "Please enter a valid email"],
-    },
-    password:{
-        type: String,
-        required: [true, "Please enter a password"]
     },
     number:{
         type: Number,
@@ -77,5 +73,5 @@ const userSchema = new mongoose.Schema({
 })
 
 
-const User = mongoose.model("User",userSchema)
-module.exports = User ;
+const college = mongoose.model("college",collegeSchema)
+module.exports = college ;
